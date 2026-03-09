@@ -1,1 +1,4 @@
 node_modules
+tests/results
+data/stations.ts
+dist

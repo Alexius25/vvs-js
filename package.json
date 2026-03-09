@@ -1,7 +1,7 @@
 {
-  "name": "vvs-js",
+  "name": "@alexius25/vvs-js",
   "version": "1.0.0",
-  "description": "",
+  "description": "An unofficial JavaScript library for the Verkehrsverbund Stuttgart API",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -9,11 +9,11 @@
     "build:esm": "tsc --project tsconfig.json",
     "build:cjs": "tsc --project tsconfig.cjs.json",
     "build": "npm run build:esm && npm run build:cjs",
-
     "test:icons": "tsx tests/test_icons.ts",
     "test:livePos": "tsx tests/test_livePos.ts",
     "test:stationCompletion": "tsx tests/test_stationCompletion.ts",
-    "test": "npm run test:icons && npm run test:livePos && npm run test:stationCompletion"
+    "test:departures": "tsx tests/test_departure.ts",
+    "test": "npm run test:icons && npm run test:livePos && npm run test:stationCompletion && npm run test:departures"
   },
   "keywords": [
     "vvs",
@@ -31,6 +31,7 @@
   "devDependencies": {
     "@types/node": "^25.2.3",
     "@types/xmldom": "^0.1.34",
+    "csv-parser": "^3.2.0",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   },
@@ -41,9 +42,17 @@
     ".": {
       "import": "./dist/esm/index.js",
       "require": "./dist/cjs/index.js"
+    },
+    "./enums": {
+      "import": "./dist/esm/enums/index.js",
+      "require": "./dist/cjs/enums/index.js"
     }
   },
   "engines": {
     "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alexius25/vvs-js.git"
   }
 }

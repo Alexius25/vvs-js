@@ -1,6 +1,6 @@
 import axios from "axios";
 import { DOMParser, XMLSerializer } from "xmldom";
-import { Icon } from "../enums";
+import { Icon } from "../enums/index.js";
 
 export default class VVSClientIcons {
     private cachedIcons?: string;

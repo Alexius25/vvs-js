@@ -1,9 +1,9 @@
-export type PinResponse = {
+export type PinsResponse = {
     success: boolean;
-    pins: Pin[];
+    pins: PinInfo[];
 }
 
-export type Pin = {
+export type PinInfo = {
     desc: string;
     addDesc: string;
     type: string;
@@ -16,11 +16,11 @@ export type Pin = {
     distance: number;
     stateless: string;
     coords: [number, number];
-    attrs: PinAttrs;
+    attrs: PinAttributes;
     infos: any;
 }
 
-export type PinAttrs = {
+export type PinAttributes = {
     STOP_GLOBAL_ID: string;
     STOP_NAME_WITH_PLACE: string;
     STOP_MAJOR_MEANS: string;
@@ -30,9 +30,9 @@ export type PinAttrs = {
     STOP_SURROUNDING_MAP: string;
 }
 
-export type LivePositionResponse = LivePosition[];
+export type LivePositionsResponse = VehicleLivePosition[];
 
-export type LivePosition = {
+export type VehicleLivePosition = {
     id: string;
     journeyIdentifier: string;
     currentStop: string;
@@ -47,15 +47,15 @@ export type LivePosition = {
     MOTCode: number;
     realtime: number;
     timestamp: string;
-    previous?: Coordinates;
+    previous?: GeoCoordinates;
 }
 
-export type Coordinates = {
+export type GeoCoordinates = {
     latitude: number;
     longitude: number;
 }
 
-export type RapidPlaceAutoCompleteResponse = {
+export type AutocompleteResponse = {
     serverInfo: {
         controllerVersion: string;
         serverID: string;
@@ -66,10 +66,10 @@ export type RapidPlaceAutoCompleteResponse = {
     }
     version: string;
     systemMessages: any[];
-    locations: RapidPlaceAutoCompleteResponseLocation[];
+    locations: PlaceLocation[];
 }
 
-export type RapidPlaceAutoCompleteResponseLocation = {
+export type PlaceLocation = {
     id: string;
     isGlobalId: boolean;
     name: string;
@@ -82,10 +82,10 @@ export type RapidPlaceAutoCompleteResponseLocation = {
         name: string;
         type: string;
     };
-    assignedStops: AssignedStops[];
+    assignedStops: AssignedStop[];
 }
 
-export type AssignedStops = {
+export type AssignedStop = {
     id: string;
     isGlobalId: boolean;
     name: string;

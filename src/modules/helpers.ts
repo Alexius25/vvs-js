@@ -1,11 +1,11 @@
-import { RapidPlaceAutoCompleteResponse } from "../types";
+import { AutocompleteResponse } from "../types.js";
 import axios from "axios";
 
 export default class VVSClientHelpers {
 
-    async getPlaceCompletion(query: string): Promise<RapidPlaceAutoCompleteResponse> {
+    async getPlaceCompletion(query: string): Promise<AutocompleteResponse> {
         try {
-            const response = await axios.get<RapidPlaceAutoCompleteResponse>("https://www3.vvs.de/mngvvs/XML_STOPFINDER_REQUEST", {
+            const response = await axios.get<AutocompleteResponse>("https://www3.vvs.de/mngvvs/XML_STOPFINDER_REQUEST", {
                 params: {
                     SpEncId: 0,
                     coordOutputFormat: "EPSG:4326",

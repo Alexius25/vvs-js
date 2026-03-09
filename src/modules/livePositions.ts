@@ -1,6 +1,6 @@
 import axios from "axios";
-import { ModCode } from "../enums";
-import type { LivePositionResponse, PinResponse } from "../types";
+import { ModCode } from "../enums/index.js";
+import type { LivePositionsResponse, PinsResponse } from "../types.js";
 
 export default class VVSClientLivePositions {
     private axiosInstance = axios.create({
@@ -15,9 +15,9 @@ export default class VVSClientLivePositions {
      * @param latMax Maximum latitude of the bounding box.
      * @param lonMax Maximum longitude of the bounding box.
      * @param modCodes Array of ModCodes to filter the types of vehicles (default: all types).
-     * @returns A promise that resolves to a LivePositionResponse containing the live positions.
+     * @returns A promise that resolves to a LivePositionsResponse containing the live positions.
      */
-    async getLivePositions(latMin: number, lonMin: number, latMax: number, lonMax: number, modCodes: ModCode[] = [ModCode.Normal_Train, ModCode.S_Bahn, ModCode.Stadtbahn, ModCode.Bus]): Promise<LivePositionResponse> {
+    async getLivePositions(latMin: number, lonMin: number, latMax: number, lonMax: number, modCodes: ModCode[] = [ModCode.Normal_Train, ModCode.S_Bahn, ModCode.Stadtbahn, ModCode.Bus]): Promise<LivePositionsResponse> {
         try {
             const res = await this.axiosInstance.get("livepositions", {
                 params: {
@@ -42,9 +42,9 @@ export default class VVSClientLivePositions {
      * @param radius Search radius in meters.
      * @param limit Maximum number of results to return (default: -1 for no limit).
      * @param distance Doesn't seem to have an effect, but is required by the API (default: 1).
-     * @returns A promise that resolves to a PinResponse containing the nearby pins.
+     * @returns A promise that resolves to a PinsResponse containing the nearby pins.
      */
-    async getPinsNearby(lat: number, lng: number, radius: number, limit: number = -1, distance: number = 1): Promise<PinResponse> {
+    async getPinsNearby(lat: number, lng: number, radius: number, limit: number = -1, distance: number = 1): Promise<PinsResponse> {
         try {
             const res = await this.axiosInstance.get("coords", {
                 params: {
